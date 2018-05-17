@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Route, Redirect, Link, withRouter } from 'react-router-dom';
 import "./home.less";
 import { Menu, Icon, Layout } from "antd";
-import svg from "@/image/logo.svg"
+import svg from "@/image/logo.svg";
+import PersonalInfo from "@/personalInfo/personalInfo.jsx";
+
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
+withRouter(PersonalInfo);
 
 class Home extends Component {
-  handleClick = e => {
-    console.log("click ", e);
+
+  handleClick = () => {
+    debugger
+    this.props.history.push(`${this.props.location.pathname}/personalInfo`);
   };
   render() {
     return (
@@ -28,7 +34,7 @@ class Home extends Component {
                 defaultSelectedKeys={["1"]}
                 defaultOpenKeys={["sub1", "sub2", "sub3"]}
               >
-                <Menu.Item key="1">
+                <Menu.Item key="1" onClick={this.handleClick.bind(this)}>
                   <Icon type="mail" />
                   个人中心
                 </Menu.Item>
@@ -73,7 +79,9 @@ class Home extends Component {
                 <Menu.Item key="9">我的收藏</Menu.Item>
               </Menu>
             </Sider>
-            <Content>main content</Content>
+            <Content className="main-content">
+            <Route path={`${this.props.location.pathname}/personalInfo`} component={PersonalInfo} />
+            </Content>
           </Layout>
         </Layout>
       </React.Fragment>
