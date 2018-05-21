@@ -4,18 +4,17 @@ import { Route, Redirect, Link, withRouter } from 'react-router-dom';
 import "./home.less";
 import { Menu, Icon, Layout } from "antd";
 import svg from "@/image/logo.svg";
-import PersonalInfo from "@/personalInfo/personalInfo.jsx";
 
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
-withRouter(PersonalInfo);
+
 
 class Home extends Component {
 
-  handleClick = () => {
-    debugger
-    this.props.history.push(`${this.props.location.pathname}/personalInfo`);
+  handleClick = (val) => {
+
+    this.props.history.push(val);
   };
   render() {
     return (
@@ -34,7 +33,7 @@ class Home extends Component {
                 defaultSelectedKeys={["1"]}
                 defaultOpenKeys={["sub1", "sub2", "sub3"]}
               >
-                <Menu.Item key="1" onClick={this.handleClick.bind(this)}>
+                <Menu.Item key="1" onClick={this.handleClick.bind(this, "/")}>
                   <Icon type="mail" />
                   个人中心
                 </Menu.Item>
@@ -48,7 +47,7 @@ class Home extends Component {
                     </span>
                   }
                 >
-                  <Menu.Item key="2">近三个月订单</Menu.Item>
+                  <Menu.Item key="2" onClick={this.handleClick.bind(this, "/test/test1")}>近三个月订单</Menu.Item>
                 </SubMenu>
 
                 <SubMenu
@@ -80,7 +79,7 @@ class Home extends Component {
               </Menu>
             </Sider>
             <Content className="main-content">
-            <Route path={`${this.props.location.pathname}/personalInfo`} component={PersonalInfo} />
+            {this.props.children}
             </Content>
           </Layout>
         </Layout>
