@@ -1,0 +1,44 @@
+.personal-info{
+    margin-top: 20px;
+    margin-right: 20px !important;
+    padding: 10px;
+    min-height: 90px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    & > div{
+        height: 110px;
+        border-right: 1px solid #eee;
+    }
+    &:last-child{
+        border: none;
+    }
+    & > div.ant-col-5{
+        padding-top: 30px;
+        text-align: center;
+        &:first-child{
+            font-size: 14px;
+        }
+        & :nth-child(2){
+            & > span{
+                font-size: 22px;
+                font-weight: 600;
+                color:red;
+            }
+            font-size: 8px;
+        }
+    }
+    .head-photo{
+        position: relative;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-image: url("../image/head.jpeg");
+    }
+    .sub-title{
+        margin-top: 30px;
+        div{
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+}
