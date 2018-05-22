@@ -4,16 +4,21 @@ import { Route, Redirect, Link, withRouter } from 'react-router-dom';
 import "./home.less";
 import { Menu, Icon, Layout } from "antd";
 import svg from "@/image/logo.svg";
-
+import common from '@/util/common'
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 
 class Home extends Component {
-
+  componentWillMount(){
+    common.getDataByAjax('../src/static/data.json').then((data) => {
+      console.log(data)
+     
+    }, (data) => {
+    })
+  }
   handleClick = (val) => {
-
     this.props.history.push(val);
   };
   render() {

@@ -2,7 +2,7 @@ import * as homeEvent from './eventEnum';
 
 let info = {
     userName: '',
-    img: '',
+    redPacket: '',
     phone: '',
     money: 0
 };
