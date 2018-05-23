@@ -9,8 +9,8 @@ let info = {
 
 let userInfo = (state = info, action = {}) => {
     switch (action.type){
-        case homeEvent.SAVEFORMDATA:
-        return {...state, ...(action.userInfo)}
+        case homeEvent.SAVE_USER_DATA:
+        return {...state, ...(action.val)}
         break;
     }
     return state;

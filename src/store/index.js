@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from 'redux';
-import personalInfo from './personalInfo/reducer'
+import userInfo from './personalInfo/reducer'
 
 let store = createStore(
-    combineReducers({personalInfo})
+    combineReducers({userInfo})
 );
 export default store;

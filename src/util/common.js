@@ -7,7 +7,7 @@ export default class common {
             xml.onreadystatechange = function () {
                 if(xml.readyState === 4){
                     if(xml.status === 200){
-                        resolve(xml.responseText)
+                        resolve(JSON.parse(xml.responseText))
                     }else{
                         reject({error: 'error'})
                     }

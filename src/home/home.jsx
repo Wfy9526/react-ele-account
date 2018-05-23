@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Redirect, Link, withRouter } from 'react-router-dom';
 import "./home.less";
-import { Menu, Icon, Layout } from "antd";
+import { Menu, Icon, Layout, message } from "antd";
 import svg from "@/image/logo.svg";
-import common from '@/util/common'
+import common from '@/util/common';
+import {getUserInfo} from "@/store/personalInfo/action"
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
-
 class Home extends Component {
   componentWillMount(){
-    common.getDataByAjax('../src/static/data.json').then((data) => {
-      console.log(data)
-     
+    let self = this;
+    common.getDataByAjax('./data.json').then((data) => {
+      self.props.getUserInfo(data.personalInfo);
     }, (data) => {
+      message.error('获取数据失败!')
     })
   }
   handleClick = (val) => {
@@ -93,4 +94,6 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect((state) => ({
+  userInfo: state.userInfo
+}), {getUserInfo,})(Home);
