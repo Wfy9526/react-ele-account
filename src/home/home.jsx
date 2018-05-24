@@ -5,12 +5,22 @@ import "./home.less";
 import { Menu, Icon, Layout, message } from "antd";
 import svg from "@/image/logo.svg";
 import common from '@/util/common';
-import {getUserInfo} from "@/store/personalInfo/action"
+import {getUserInfo} from "@/store/personalInfo/action";
+import PropTypes from 'prop-types';
+import store from '@/store/index';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 class Home extends Component {
+
+  static childContextTypes = {
+    store: PropTypes.object,
+  };
+  getChildContext(){
+     return {store: store}
+  }
+
   componentWillMount(){
     let self = this;
     common.getDataByAjax('./data.json').then((data) => {

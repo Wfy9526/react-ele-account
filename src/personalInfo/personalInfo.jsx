@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import './personalInfo.less';
-import echarts from 'echarts';
-import store from "@/store/index"
+import PropTypes from 'prop-types';
+import EchartsStatistic from './echartsStatistic';
 
 export default class PersonalInfo extends Component {
+    
+  static contextTypes = {
+    store: PropTypes.object,
+  };
+
     constructor(props){
         super(props);
-        this.state = store.getState();
+        this.state = {
+            userName: "",
+            redPacket: "0",
+            phone: "",
+            money: 0
+        }
     }
 
+
     componentDidMount(){
-        store.subscribe((state) => {
-            this.setState(store.getState())
+        const self = this;
+        this.context.store.subscribe(() => {
+            self.setState(self.context.store.getState().userInfo);
         })
     }
     render() {
@@ -23,7 +35,7 @@ export default class PersonalInfo extends Component {
                         <div className="head-photo"></div>
                     </Col>
                     <Col span={16} className="sub-title">
-                        <div>夜已深, {}</div>
+                        <div>夜已深, {this.state.userName}</div>
                         <span>是不是饿的睡不着呀？吃个夜宵呗！</span>
                     </Col>
                 </Col>
@@ -33,13 +45,14 @@ export default class PersonalInfo extends Component {
                 </Col>
                 <Col span={5}>
                     <div>我的金币</div>
-                    <div><span>{this.state.redPacket}</span>个</div>
+                    <div><span>{this.state.money}</span>个</div>
                 </Col>
                 <Col span={5}>
                     <div>账户余额</div>
                     <div><span>{this.state.money}</span>个</div>
                 </Col>
             </Row>
+            <EchartsStatistic/>
         </React.Fragment>);
     }
 }
