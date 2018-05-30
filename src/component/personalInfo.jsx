@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import './personalInfo.less';
+import '../style/personalInfo.less';
 import PropTypes from 'prop-types';
+import { is, fromJS } from 'immutable';
 import EchartsStatistic from './echartsStatistic';
 
 export default class PersonalInfo extends Component {
@@ -20,14 +21,18 @@ export default class PersonalInfo extends Component {
         }
     }
 
-
-    componentDidMount(){
+    componentWillMount(){
         const self = this;
+        self.setState(self.context.store.getState().userInfo);
         this.context.store.subscribe(() => {
             self.setState(self.context.store.getState().userInfo);
         })
     }
+    shouldComponentUpdate(newProps, newState){
+        return !is(fromJS(this.state),fromJS(newState));
+    }
     render() {
+        debugger
         return (<React.Fragment>
             <Row gutter={24} className="personal-info">
                 <Col span={9}>

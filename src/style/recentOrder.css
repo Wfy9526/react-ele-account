@@ -1,0 +1,8 @@
+.recent-order {
+  background: #ffffff;
+  h3 {
+    padding: 15px 15px 5px 15px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

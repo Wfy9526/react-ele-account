@@ -1,23 +1,25 @@
-import React, { Component } from 'react';
-import { HashRouter, Switch, Route, Redirect, hashHistory  } from 'react-router-dom';
-import { createHashHistory as createHistory } from "history";
+import React, {Component} from 'react';
+import {HashRouter, Switch, Route, Redirect, hashHistory} from 'react-router-dom';
+import {createHashHistory as createHistory} from "history";
 import Home from '@/home/home.jsx';
-import PersonalInfo from "@/personalInfo/personalInfo.jsx";
-import Test from "@/personalInfo/test.jsx";
+import PersonalInfo from "@/component/personalInfo.jsx";
+import RecentOrder from "@/component/recentOrder.jsx";
+import OrderDetails from "@/component/orderDetails.jsx";
 
-export default class RouterConfig extends Component{
-    render(){
+export default class RouterConfig extends Component {
+    render() {
         return (
-        <Home history={createHistory()}>
-        <HashRouter>
-        <Switch>
-            <Route path="/" exact component={PersonalInfo}></Route>
-            <Route path="/test" component={Test}></Route>
-            <Redirect to="/"></Redirect>
-            </Switch>
-            </HashRouter>
-        </Home>
-         );
-                
+            <Home history={createHistory()}>
+                <HashRouter>
+                    <Switch>
+                        <Route path="/" exact component={PersonalInfo}></Route>
+                        <Route path="/recentOrder" component={RecentOrder}></Route>
+                        <Route path="/orderDetails/:id" component={OrderDetails}></Route>
+                        <Redirect to="/"></Redirect>
+                    </Switch>
+                </HashRouter>
+            </Home>
+        );
+
     }
 }

@@ -53,7 +53,6 @@ class Home extends Component {
                   <Icon type="mail" />
                   个人中心
                 </Menu.Item>
-
                 <SubMenu
                   key="sub1"
                   title={
@@ -63,9 +62,8 @@ class Home extends Component {
                     </span>
                   }
                 >
-                  <Menu.Item key="2" onClick={this.handleClick.bind(this, "/test/test1")}>近三个月订单</Menu.Item>
+                  <Menu.Item key="2" onClick={this.handleClick.bind(this, "/recentOrder")}>近三个月订单</Menu.Item>
                 </SubMenu>
-
                 <SubMenu
                   key="sub2"
                   title={

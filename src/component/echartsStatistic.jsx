@@ -10,12 +10,12 @@ export default class EchartsStatistic extends Component {
     }
 
     componentWillMount() {
-
     }
-    componentDidMount(){
+    componentDidMount() {
         this.loadEcharts();
     }
-    loadEcharts(dom){
+
+    loadEcharts(dom) {
         let option = {
             title: {
                 text: '本周叫外卖情况',
@@ -25,18 +25,12 @@ export default class EchartsStatistic extends Component {
                 trigger: 'axis'
             },
             legend: {
-                data: ['最高气温', '最低气温']
+                data: ['外卖次数', '消费金额']
             },
             toolbox: {
                 show: true,
                 feature: {
-                    dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {readOnly: false},
                     magicType: {type: ['line', 'bar']},
-                    restore: {},
-                    saveAsImage: {}
                 }
             },
             xAxis: {
@@ -47,14 +41,14 @@ export default class EchartsStatistic extends Component {
             yAxis: {
                 type: 'value',
                 axisLabel: {
-                    formatter: '{value} °C'
+                    formatter: '{value}元'
                 }
             },
             series: [
                 {
-                    name: '最高气温',
+                    name: '外卖次数',
                     type: 'line',
-                    data: [11, 11, 15, 13, 12, 13, 10],
+                    data: [1, 3, 0, 2, 1, 0, 3],
                     markPoint: {
                         data: [
                             {type: 'max', name: '最大值'},
@@ -65,12 +59,22 @@ export default class EchartsStatistic extends Component {
                         data: [
                             {type: 'average', name: '平均值'}
                         ]
+                    },
+                    label: {
+                        normal: {
+                            show: true
+                        }
                     }
                 },
                 {
-                    name: '最低气温',
+                    name: '消费金额',
                     type: 'line',
-                    data: [1, -2, 2, 5, 3, 2, 0],
+                    data: [15, 70, 0, 40, 19, 0, 100],
+                    label: {
+                        normal: {
+                            show: true
+                        }
+                    },
                     markPoint: {
                         data: [
                             {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
@@ -102,15 +106,21 @@ export default class EchartsStatistic extends Component {
         let myChart = echarts.init(document.getElementById('main'));
         myChart.setOption(option);
     }
+
     render() {
+        let styleObj = {
+            marginLeft: '30px',
+            width: '80%',
+            height: '400px'
+        };
         return (
-            <React.fragment>
-                <Row gutter={24}>
-                    <Col span={24}>
-                        <div id="main" style="width: 100%;height:100%;"></div>
+            <React.Fragment>
+                <Row gutter={24} style={{marginTop: "20px"}}>
+                    <Col span={24} style={{margin: "0 auto"}}>
+                        <div id="main" style={styleObj}></div>
                     </Col>
                 </Row>
-            </React.fragment>
+            </React.Fragment>
         )
     }
 }
