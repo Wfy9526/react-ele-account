@@ -73,7 +73,7 @@ class Home extends Component {
                     </span>
                   }
                 >
-                  <Menu.Item key="3">我的红包</Menu.Item>
+                  <Menu.Item key="3"  onClick={this.handleClick.bind(this, "/redPackage")}>我的红包</Menu.Item>
                   <Menu.Item key="4">账户余额</Menu.Item>
                   <Menu.Item key="5">我的金币</Menu.Item>
                 </SubMenu>
