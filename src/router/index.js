@@ -6,6 +6,7 @@ import PersonalInfo from "@/component/personalInfo.jsx";
 import RecentOrder from "@/component/recentOrder.jsx";
 import OrderDetails from "@/component/orderDetails.jsx";
 import RedPackage from "@/component/redPackage.jsx";
+import MyCollection from "@/component/myCollection.jsx";
 
 export default class RouterConfig extends Component {
     render() {
@@ -16,6 +17,7 @@ export default class RouterConfig extends Component {
                         <Route path="/" exact component={PersonalInfo}></Route>
                         <Route path="/recentOrder" component={RecentOrder}></Route>
                         <Route path="/redPackage" component={RedPackage}></Route>
+                        <Route path="/myCollection" component={MyCollection}></Route>
                         <Route path="/orderDetails/:id" component={OrderDetails}></Route>
                         <Redirect to="/"></Redirect>
                     </Switch>

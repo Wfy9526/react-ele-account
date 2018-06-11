@@ -89,7 +89,7 @@ class Home extends Component {
                   <Menu.Item key="7">个人资料</Menu.Item>
                   <Menu.Item key="8">地址管理</Menu.Item>
                 </SubMenu>
-                <Menu.Item key="9">我的收藏</Menu.Item>
+                <Menu.Item key="9"  onClick={this.handleClick.bind(this, "/myCollection")}>我的收藏</Menu.Item>
               </Menu>
             </Sider>
             <Content className="main-content">

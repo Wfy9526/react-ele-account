@@ -70,7 +70,7 @@ export default class RecentOrder extends Component {
                                     <td>{_.money}</td>
                                     <td>{_.status}</td>
                                     <td>
-                                        <Button onClick={this.reviewOrderInfo.bind(this, _.id)}>订单详情</Button>
+                                        <Button size="small" style={{marginRight: '5px'}} onClick={this.reviewOrderInfo.bind(this, _.id)}>订单详情</Button>
                                         <Button size="small" onClick={this.orderAgain.bind(this, _.content)}>再来一单</Button>
                                     </td>
                                 </tr>

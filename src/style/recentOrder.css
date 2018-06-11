@@ -1,8 +1,29 @@
 .recent-order {
+  padding-bottom: 20px;
   background: #ffffff;
   h3 {
     padding: 15px 15px 5px 15px;
     font-size: 18px;
     font-weight: 700;
+  }
+  table{
+    text-align: center;
+    thead{
+      td{
+        width: 20%;
+      }
+      td:nth-of-type(3){
+        width: 10%;
+      }
+    }
+    tbody{
+      td{
+        width: 20%;
+        padding: 5px 0;
+      }
+      td:nth-of-type(3){
+        width: 10%;
+      }
+    }
   }
 }
